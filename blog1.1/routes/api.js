@@ -123,9 +123,9 @@ router.all('/iscroll', function(req, res, next) {
 /* GET new essay */
 router.all('/essay', function(req, res, next) {
   var essayid = req.body['id']
-  console.log(essayid) // css0
+  // console.log(essayid) // css0
   var essayname = essayid.replace(/\d/ig,'')
-  console.log(essayname)
+  // console.log(essayname)
 
   //查找数据函数
   var findData = function(db,callback){
@@ -144,7 +144,7 @@ router.all('/essay', function(req, res, next) {
       console.log(err);
     }else{
       findData(db,function(results){
-          console.log(results);     
+          // console.log(results);     
           res.send(results[0]['data']);    
       })
     }
@@ -182,9 +182,9 @@ router.post('/registor',function(req,res){
     if(err){
       console.log(err)
     }else{
-      console.log('数据库连接成功')
+      // console.log('数据库连接成功')
       insertData(db,function(results){
-        console.log(results);
+        // console.log(results);
         // 往前端显示注册成功
         // res.send('注册成功');
         // 重定向
@@ -200,8 +200,8 @@ router.post('/registor',function(req,res){
 router.post('/login',function(req,res){
   var username = req.body['username']
   var password = req.body['password']
-  console.log(username+"............")
-  console.log(password+"..........")
+  // console.log(username+"............")
+  // console.log(password+"..........")
   //查找数据函数
   var findData = function(db,callback){
     var conn = db.collection('users')
@@ -232,15 +232,15 @@ router.post('/login',function(req,res){
 })
 /*logout*/
 router.all('/logout',function(req,res){
-  //方法一
+  // 方法一
   // console.log(req.session.username+'logout')
   // req.session.username = undefined
   // console.log(req.session.username+'zhilogout')
   // res.redirect('/')
-  //方法二
-  console.log(req.session.username+'logout')
+  // 方法二
+  // console.log(req.session.username+'logout')
   req.session.destroy(function(req,err){
-    console.log('zhilogout')
+    // console.log('zhilogout')
     // res.redirect('/') 
   })
 })
@@ -248,7 +248,7 @@ router.all('/logout',function(req,res){
 router.all('/testsession',function(req,res){
   if (req.session.username) {
     res.send(req.session.username)
-    console.log(req.session.username+'session')
+    // console.log(req.session.username+'session')
   }
 })
 /*list*/
@@ -256,7 +256,7 @@ router.all('/list',function(req,res){
   //构建分页信息
   //拿到前端post数据req.body;拿到前端get数据req.query
   var dataId = req.body['dataId']
-  console.log(dataId+"list")
+  // console.log(dataId+"list")
   var findData = function (db, callback) {
     var conn = db.collection(dataId)
     conn.find({}).sort({_id: -1}).toArray(function (err, results) {
@@ -275,8 +275,8 @@ router.all('/list',function(req,res){
         console.log(err);
       }else{
         findData(db,function(results){
-            console.log(results)
-            console.log("jjjjjjjjjjjjjjjjj")
+            // console.log(results)
+            // console.log("jjjjjjjjjjjjjjjjj")
             res.send(results)
         })
       }
@@ -289,7 +289,7 @@ router.post('/submit',function(req,res){
     var content = req.body['content']
     var connName = req.body['connName']
     var usName = req.body['usn']
-    console.log(connName)
+    // console.log(connName)
 
     var insertData = function(db,callback){
         var comment = db.collection(connName)
@@ -335,8 +335,8 @@ router.post('/submit',function(req,res){
         console.log(err);
       }else{
         insertData(db,function(results){
-          console.log(results+"finally");
-          console.log(results);console.log(results[2]);
+          // console.log(results+"finally");
+          // console.log(results);console.log(results[2]);
           res.send(results[2])
           //res.redirect('./list')
         })
