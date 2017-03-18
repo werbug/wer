@@ -9,9 +9,10 @@ document.addEventListener('deviceready',function () {
     '/static/libs/js/xheditor/xheditor_lang/zh-cn.js',
     '/static/libs/js/swiper.js',
     '/static/libs/js/iscroll-probe.js',
-    '/static/js/manifest.14cc223a468b4801753f.js',
+    '/static/js/manifest.f9cc82c4788c87f32cfb.js',
     '/static/js/vendor.4b5982c979e31238d060.js',
-    '/static/js/app.cc58d79a21c2655bbc13.js'
+    '/static/js/app.7033a8933b93fb39a638.js',
+    'cordova.js'
   ]
   for (var i = 0; i < scripts.length; i++) {
     var script = document.createElement('script')
